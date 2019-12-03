@@ -14,6 +14,7 @@ public class ComputeNumbers : MonoBehaviour
     public Button btnCalculate;
     public Toggle tglSubMode;
     public Toggle tglMultMode;
+    public Toggle tglAddMode;
 
     public void SetResult()
     {
@@ -27,6 +28,11 @@ public class ComputeNumbers : MonoBehaviour
             result.text = MultNumbers().ToString();
         }
 
+        if (operatorSymbol.text == "+")
+        {
+            result.text = AddNumbers().ToString();
+        }
+
         DisableInput();
     }
 
@@ -38,6 +44,7 @@ public class ComputeNumbers : MonoBehaviour
         btnReset.interactable = true;
         tglSubMode.interactable = false;
         tglMultMode.interactable = false;
+        tglAddMode.interactable = false;
     }
 
     private void EnableInput()
@@ -48,6 +55,7 @@ public class ComputeNumbers : MonoBehaviour
         btnReset.interactable = false;
         tglSubMode.interactable = true;
         tglMultMode.interactable = true;
+        tglAddMode.interactable = true;
     }
 
     public void MultOperator()
@@ -60,13 +68,17 @@ public class ComputeNumbers : MonoBehaviour
         operatorSymbol.text = "-";
     }
 
+    public void AddOperator()
+    {
+        operatorSymbol.text = "+";
+    }
+
     public void Reset()
     {
         inputA.text = "0";
         inputB.text = "0";
         result.text = "Result";
         EnableInput();
-        
     }
 
     private int SubNumbers()
@@ -78,6 +90,12 @@ public class ComputeNumbers : MonoBehaviour
     private int MultNumbers()
     {
         int tempResult = int.Parse(inputA.text) * int.Parse(inputB.text);
+        return tempResult;
+    }
+
+    private int AddNumbers()
+    {
+        int tempResult = int.Parse(inputA.text) + int.Parse(inputB.text);
         return tempResult;
     }
 
