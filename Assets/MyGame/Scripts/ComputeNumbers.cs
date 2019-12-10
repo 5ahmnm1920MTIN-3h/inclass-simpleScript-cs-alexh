@@ -18,6 +18,8 @@ public class ComputeNumbers : MonoBehaviour
     public Toggle tglSubMode;
     public Toggle tglMultMode;
     public Toggle tglDivMode;
+    public string resultText = "Result";
+    public string englishCulture = "en-US";
 
     private void Awake()
     {
@@ -26,9 +28,8 @@ public class ComputeNumbers : MonoBehaviour
 
     private void ChangeCulture()
     {
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-        
+        Thread.CurrentThread.CurrentCulture = new CultureInfo(englishCulture);
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(englishCulture);
     }
 
     public void SetResult()
@@ -83,9 +84,9 @@ public class ComputeNumbers : MonoBehaviour
 
     public void Reset()
     {
-        inputA.text = "0";
-        inputB.text = "0";
-        result.text = "Result";
+        inputA.text = "";
+        inputB.text = "";
+        result.text = resultText;
         EnableInput();
     }
 
