@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
+public enum OperatorType{plus, minus, multiply, divide}
 
 public class ComputeNumbers : MonoBehaviour
 {
@@ -37,16 +37,16 @@ public class ComputeNumbers : MonoBehaviour
         switch (operatorSymbol.text)
         {
             case "+":
-                result.text = AddNumbers().ToString();
+                result.text = CalculateNumbers(OperatorType.plus).ToString();
                 break;
             case "-":
-                result.text = SubNumbers().ToString();
+                result.text = CalculateNumbers(OperatorType.minus).ToString();
                 break;
             case "*":
-                result.text = MultNumbers().ToString();
+                result.text = CalculateNumbers(OperatorType.multiply).ToString();
                 break;
             case "/":
-                result.text = DivNumbers().ToString();
+                result.text = CalculateNumbers(OperatorType.divide).ToString();
                 break;
         }
 
@@ -90,27 +90,30 @@ public class ComputeNumbers : MonoBehaviour
         EnableInput();
     }
 
-    private float AddNumbers()
-    {
-        float tempResult = float.Parse(inputA.text) + float.Parse(inputB.text);
-        return tempResult;
-    }
 
-    private float SubNumbers()
+    private float CalculateNumbers(OperatorType type)
     {
-        float tempResult = float.Parse(inputA.text) - float.Parse(inputB.text);
-        return tempResult;
-    }
+        float tempResult;
+        switch (type)
+        {
+            case OperatorType.plus:
+                tempResult = float.Parse(inputA.text) + float.Parse(inputB.text);
+                break;
+            case OperatorType.minus:
+                tempResult = float.Parse(inputA.text) - float.Parse(inputB.text);
+                break;
+            case OperatorType.multiply:
+                tempResult = float.Parse(inputA.text) * float.Parse(inputB.text);
+                break;
+            case OperatorType.divide:
+                tempResult = float.Parse(inputA.text) / float.Parse(inputB.text);
+                break;
+            default:
+                tempResult = 0;
+                break;
+        }
 
-    private float MultNumbers()
-    {
-        float tempResult = float.Parse(inputA.text) * float.Parse(inputB.text);
-        return tempResult;
-    }
-
-    private float DivNumbers()
-    {
-        float tempResult = float.Parse(inputA.text) / float.Parse(inputB.text);
         return tempResult;
     }
 }
+
