@@ -30,26 +30,23 @@ public class ComputeNumbers : MonoBehaviour
         Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
         
     }
+
     public void SetResult()
     {
-        if (operatorSymbol.text == "+")
+        switch (operatorSymbol.text)
         {
-            result.text = AddNumbers().ToString();
-        }
-
-        if (operatorSymbol.text == "-")
-        {
-            result.text = SubNumbers().ToString();
-        }
-
-        if (operatorSymbol.text == "*")
-        {
-            result.text = MultNumbers().ToString();
-        }
-
-        if (operatorSymbol.text == "/")
-        {
-            result.text = DivNumbers().ToString();
+            case "+":
+                result.text = AddNumbers().ToString();
+                break;
+            case "-":
+                result.text = SubNumbers().ToString();
+                break;
+            case "*":
+                result.text = MultNumbers().ToString();
+                break;
+            case "/":
+                result.text = DivNumbers().ToString();
+                break;
         }
 
         DisableInput();
