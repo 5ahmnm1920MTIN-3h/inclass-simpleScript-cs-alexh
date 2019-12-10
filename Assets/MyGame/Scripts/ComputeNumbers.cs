@@ -76,24 +76,9 @@ public class ComputeNumbers : MonoBehaviour
         tglDivMode.interactable = true;
     }
 
-    public void AddOperator()
+    public void SetOperator(string operatorSymbolInput)
     {
-        operatorSymbol.text = "+";
-    }
-
-    public void SubOperator()
-    {
-        operatorSymbol.text = "-";
-    }
-
-    public void MultOperator()
-    {
-        operatorSymbol.text = "*";
-    }
-
-    public void DivOperator()
-    {
-        operatorSymbol.text = "/";
+        operatorSymbol.text = operatorSymbolInput;
     }
 
     public void Reset()
