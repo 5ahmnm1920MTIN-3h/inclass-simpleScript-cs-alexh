@@ -8,18 +8,22 @@ public enum OperatorType{plus, minus, multiply, divide}
 
 public class ComputeNumbers : MonoBehaviour
 {
-    public TextMeshProUGUI result;
-    public TextMeshProUGUI operatorSymbol;
-    public TMP_InputField inputA;
-    public TMP_InputField inputB;
-    public Button btnReset;
-    public Button btnCalculate;
-    public Toggle tglAddMode;
-    public Toggle tglSubMode;
-    public Toggle tglMultMode;
-    public Toggle tglDivMode;
-    public string resultText = "Result";
-    public string englishCulture = "en-US";
+    [SerializeField] private TextMeshProUGUI result;
+    [SerializeField] private TextMeshProUGUI operatorSymbol;
+
+    [SerializeField] private TMP_InputField inputA;
+    [SerializeField] private TMP_InputField inputB;
+
+    [SerializeField] private Button btnReset;
+    [SerializeField] private Button btnCalculate;
+
+    [SerializeField] private Toggle tglAddMode;
+    [SerializeField] private Toggle tglSubMode;
+    [SerializeField] private Toggle tglMultMode;
+    [SerializeField] private Toggle tglDivMode;
+
+    [SerializeField] private string englishCulture = "en-US";
+    [SerializeField] private string resultText = "Result";
 
     private void Awake()
     {
@@ -89,7 +93,6 @@ public class ComputeNumbers : MonoBehaviour
         result.text = resultText;
         EnableInput();
     }
-
 
     private float CalculateNumbers(OperatorType type)
     {
